@@ -38,6 +38,7 @@ public class Livro implements Serializable {
 	private Livro(Livro livro) {
 		this.titulo = livro.getTitulo();
 		this.preco = livro.getPreco();
+		this.autor = livro.getAutor();
 	}
 
 	public static Livro of(Livro livro) {

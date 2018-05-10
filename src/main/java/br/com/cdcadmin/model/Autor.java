@@ -41,6 +41,7 @@ public class Autor implements Serializable {
 		this.nome = autor.getNome();
 		this.email = autor.getEmail();
 		this.senha = autor.getSenha();
+		this.livros = autor.getLivros();
 	}
 
 	public static Autor of(Autor autor) {
