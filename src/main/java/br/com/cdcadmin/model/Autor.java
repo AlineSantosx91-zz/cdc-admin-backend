@@ -11,6 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Autor implements Serializable {
@@ -20,17 +24,20 @@ public class Autor implements Serializable {
 	 */
 	private static final long serialVersionUID = 8703569209143886086L;
 
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_autor")
 	private Long id;
 
+	@NotBlank
 	private String nome;
+	@NotBlank
 	private String email;
+	@NotBlank
 	private String senha;
 	
+	@JsonBackReference
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="autor")
-
 	private List<Livro> livros;
 
 	private Autor() {

@@ -3,6 +3,8 @@ package br.com.cdcadmin.web;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,7 @@ public class AutorController {
 	private AutorService livroService;
 
 	@PostMapping
-	public ResponseEntity<Autor> criar(@RequestBody Autor livro) {
+	public ResponseEntity<Autor> criar(@RequestBody @Valid Autor livro) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(livroService.adicionaAutor(livro));
 	}
 	
