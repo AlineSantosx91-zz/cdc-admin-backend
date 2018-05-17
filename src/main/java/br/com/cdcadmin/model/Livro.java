@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Livro implements Serializable {
@@ -24,10 +26,13 @@ public class Livro implements Serializable {
 	@Column(name = "id_livro")
 	private Long id;
 	
+	@NotBlank
 	private String titulo;
+	@NotBlank
 	private String preco;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@NotNull
+	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="id_autor")
 	private Autor autor;
 	
