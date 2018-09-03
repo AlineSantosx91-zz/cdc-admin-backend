@@ -20,7 +20,7 @@ public class AutorService {
 	}
 
 	public Optional<Autor> buscaPorId(Long id) {
-		return autorRepository.findById(id);
+		return null;
 	}
 	
 	public List<Autor> buscarTodos(){

@@ -6,6 +6,8 @@ import java.util.Optional;
 import br.com.cdcadmin.model.Autor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.cdcadmin.model.Livro;
@@ -37,8 +39,14 @@ public class LivroService {
 		return livroRepository.save(livroParam);
 	}
 
-	public void deletaLivro(Long id){
+	public ResponseEntity<Livro>  deletaLivro(Long id){
+		final Optional<Livro> livro = this.buscaPorId(id);
+		if(livro == null){
+			return new ResponseEntity<Livro>(HttpStatus.NOT_FOUND);
+		}
+
 		livroRepository.deleteById(id);
+		return new ResponseEntity<Livro>(livro.get(), HttpStatus.NO_CONTENT);
 	}
 
 	public Autor buscarAutorDoLivro(Long id){
